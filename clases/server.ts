@@ -33,11 +33,15 @@ export default class Server{
         console.log('Escuchando conexiones');
 
         this.io.on('connection', cliente=>{
-            console.log('Cliente conectado');
+
+            socket.conectarCliente(cliente);
+            socket.configurarUsuario(cliente,this.io);
 
             socket.mensaje(cliente, this.io);
 
-            socket.desconectar(cliente);           
+            socket.desconectar(cliente);  
+            
+            
         });
     }
 
